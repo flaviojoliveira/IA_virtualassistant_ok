@@ -1,33 +1,76 @@
-import speech_recognition as sr
-import pyttsx3
-from config import *
-from random import choice
+#Editado de Step 
 
-reproducao = pyttsx3.init()
-
-def sai_som(reposta):
-	reproducao.say(reposta)
-	reproducao.runAndWait()
+version = "1"
 
 
-print("Ouvindo...\n-----------------\n")
-while True:
-	resposta_erro_aleatoria = choice(lista_erros)
-	rec = sr.Recognizer()
+def intro():
+	msg = "Assistente - version {} / by: Professor Flávio Oliveira".format(version)
+	print("-" * len(msg) +  "\n{}\n".format(msg)  +   "-" * len(msg))
 
-	with sr.Microphone() as s:
-		rec.adjust_for_ambient_noise(s)
 
-		while True:
-			try:
-				audio = rec.listen(s)
-				entrada = rec.recognize_google(audio, language="pt")
-				print("Você disse: {}".format(entrada))
+lista_erros = [
+		"Não entendi nada",
+		"Desculpe, não entendi",
+		"Repita novamente por favor"
+]
 
-				reposta = conversas[entrada]
+conversas = {
+	"Tudo bem?": "oi, tudo bem?",
+	"sim e você?": "Estou bem obrigada por perguntar",
+}
 
-				print("Assistente: {}".format(reposta))
-				sai_som("{}".format(reposta))
+comandos = {
+	"desligar": "desligando",
+	"reiniciar": "reiniciando"
+}
 
-			except sr.UnknownValueError:
-				sai_som(resposta_erro_aleatoria)
+
+def verifica_nome(user_name):
+	if user_name.startswith("Meu nome é"):
+		user_name = user_name.replace("Meu nome é", "")
+	if user_name.startswith("Eu me chamo"):
+		user_name = user_name.replace("As pessoas me chamam de", "")
+	if user_name.startswith("Eu sou o"):
+		user_name = user_name.replace("Eu sou o", "")
+	if user_name.startswith("Eu sou a"):
+		user_name = user_name.replace("Eu sou a", "")
+
+	return user_name 
+
+
+def  verifica_nome_exist(nome):
+	dados = open("dados/nomes.txt", "r")
+	nome_list = dados.readlines()
+
+	if not nome_list:
+		vazio = open("dados/nomes.txt", "r")
+		conteudo = vazio.readlines()
+		conteudo.append("{}".format(nome))
+		vazio = open("dados/nomes.txt", "w")
+		vazio.writelines(conteudo)
+		vazio.close()
+
+		return "Olá {}, prazer em te conhecer!".format(nome)
+
+	for linha in nome_list:
+		if linha == nome:
+			return "Olá {}, acho que já nos conhecemos".format(nome)
+
+	vazio = open("dados/nomes.txt", "r")
+	conteudo = vazio.readlines()
+	conteudo.append("\n{}".format(nome))
+	vazio = open("dados/nomes.txt", "w")
+	vazio.writelines(conteudo)
+	vazio.close()
+
+	return "Oi {} é a primeira vez que nos falamos".format(nome)
+
+
+def name_list():
+	try:
+		nomes = open("dados/nomes.txt", "r")
+		nomes.close()
+
+	except FileNotFoundError:
+		nomes = open("dados/nomes.txt", "w")
+		nomes.close()
