@@ -1,6 +1,6 @@
 import speech_recognition as sr
 import pyttsx3
-from config import *
+from config3 import *
 from random import choice
 
 reproducao = pyttsx3.init()
