@@ -14,11 +14,17 @@ Nesse projeto, nós criamos uma assistente virtual utilizando a linguagem de pro
 
 Utilizando um terminal, instale as seguintes bibliotecas utilizando o pip:
 
-```pip3 install SpeechRecogniton```
+```
+pip3 install SpeechRecogniton
+```
 
-```pip3 install PyAudio```
+```
+pip3 install PyAudio
+```
 
-```pip3 install pyttsx3```
+```
+pip3 install pyttsx3
+```
 
 Caso esteja utilizando Linux e dê o seguinte erro: 
 
@@ -62,3 +68,4 @@ Para realizar operações matemáticas simples como: adição, subtração, mult
 [Video](https://youtu.be/RnoQmsoNB9Q)
 
 
+-[x] Muito bom!

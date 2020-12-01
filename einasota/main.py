@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import speech_recognition as sr
 import pyttsx3
 from random import choice
@@ -48,9 +49,9 @@ def assistente():
                     audio = rec.listen(s)
                     entrada = rec.recognize_google(audio, language="pt-br")
                     print("{}: {}".format(user_name, entrada))
-                    #Operações Matematicas:
-                    if "Quanto é" in entrada:
-                        entrada = entrada.replace("Quanto é","")
+                    #Operacoes Matematicas:
+                    if "Quanto e" in entrada:
+                        entrada = entrada.replace("Quanto e","")
                         resposta = calcula(entrada)
                     #Clima/Tempo:
                     elif "Qual a temperatura" in entrada:
@@ -58,9 +59,9 @@ def assistente():
                         temp = lista_tempo[0]
                         temp_max = lista_tempo[1]
                         temp_min = lista_tempo[2]
-                        resposta = "A temperatura atual é de {}. A maxima é de {} e a minima é de {}".format(temp,temp_max,temp_min)
-                    elif "informações da cidade" in entrada:
-                        resposta = "Mostrando informações"
+                        resposta = "A temperatura atual e de {}. A maxima e de {} e a minima e de {}".format(temp,temp_max,temp_min)
+                    elif "informacoes da cidade" in entrada:
+                        resposta = "Mostrando informacoes"
                     elif "desligar" in entrada:
                         repro("Encerrando")
                         print("Encerrando")
@@ -68,7 +69,7 @@ def assistente():
                     else:
                         resposta = conversa[entrada]
 
-                    if resposta == "Mostrando informações":
+                    if resposta == "Mostrando informacoes":
                         lista_info = clima_tempo()  
                         long = lista_info[0]
                         lat = lista_info[1]
