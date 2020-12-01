@@ -17,3 +17,8 @@ pipwin install pyaudio
 #### Abra o código no Visual Studio Code;
 #### Conecte um microfone ao computador;
 #### Execute o código e pronuncie algumas palavras ao microfone;
+
+
+## Vinicius:
+
+- [ ] Item 1 a ser corrigido: realizar o step 2 a 4. Onde tua assistente virtual repetirá o que foi dito e também irá fornecer algumas respostas.

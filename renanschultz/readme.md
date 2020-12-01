@@ -34,3 +34,9 @@ Nesta etapa de nosso projeto criamos um "feedback_fala" com uma lista de respost
 ```sh
 $ pip3 install pyttsx3
 ```
+
+## Renan:
+
+- [ ] Item 1 a ser corrigido: Crie uma issue ou um novo arquivo .md neste repositório explicando os itens das linhas 17 a 32.
+- [ ] Item 2 a ser corrigido: realizar o step 2 a 4. Onde tua assistente virtual repetirá o que foi dito e também irá fornecer algumas respostas.
+- [ ] Teu arquivo readme.md precisar ser atualizado.
